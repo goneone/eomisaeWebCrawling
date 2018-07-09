@@ -12,13 +12,13 @@ public class eomisaeWebcrawling {
 		
 			Elements hotNews = doc.select("._listA a");
 		//Elements hotNews = doc.select("._listA");
-			//System.out.println(hotNews.toString());
+			System.out.println(hotNews.toString());
 			//System.out.println(hotNews.text());
 			
 			//2.정제하기
-			String text = hotNews.toString();
+			/*String text = hotNews.toString();
 			String textWithoutTag = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
-			System.out.println(textWithoutTag);
+			System.out.println(textWithoutTag);*/
 			
 			//전체과정
 			//1 데이터 받아오기
