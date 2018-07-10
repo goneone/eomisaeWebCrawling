@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//allPost = 전체글
+//allPost = 전체글dd
 public class eomisaeWebcrawling {
 	public static void main(String[] args) throws Exception {
 
