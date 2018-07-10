@@ -49,7 +49,7 @@ public class sendMail {
     private static class senderAccount extends javax.mail.Authenticator {
  
         public PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication("kuyt1819", "qq1066411"); // @gmail.com 제외한 계정 ID, PASS
+            return new PasswordAuthentication("kuyt1819", ""); // @gmail.com 제외한 계정 ID, PASS
  
         }
     }
