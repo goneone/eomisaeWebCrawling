@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class eomisaeWebcrawling {
    public static void main(String[] args) throws Exception {
@@ -61,11 +63,23 @@ public class eomisaeWebcrawling {
             
       if (그 숫자 > 8) {
       그 라인 출력, 그 전라인도 출력. */
-       BufferedReader reader = new BufferedReader(new FileReader("output.txt"));
+      List<String> ret = fileLineRead("output.txt");
+      String line;
+      for(int i = 0;i<ret.size();i++){
+    	  if (isStringDouble(ret.get(i))) {
+             if((Integer.parseInt(ret.get(i))) <= 25 && (Integer.parseInt(ret.get(i))) >=6) {
+                 System.out.println(ret.get(i-1) + " " +ret.get(i));
+                 
+      // System.out.println("Line("+i+")"+ret.get(i));
+             }
+      }
+      }
+     /*  BufferedReader reader = new BufferedReader(new FileReader("output.txt"));
           String line;
           String Box;
           //배열에 이정보들을 담아뒀다가.. 꺼내는거..는어떨까  
           while ((line = reader.readLine()) != null) { // 한 라인씩 받아온다
+        	  
               String str = line;
               if (isStringDouble(str)) {
                  if((Integer.parseInt(str)) <= 25) {
@@ -81,22 +95,22 @@ public class eomisaeWebcrawling {
               else
                 System.out.print("");
 
-            }
+            }*/
 
         /*      if(line.length() >3) {
              System.out.print(line);
               System.out.println();
           } else {
              System.out.println("1");*/
-          
-          reader.close();  // 다 읽었으면 닫아주어야 한다.
+       /*   
+          reader.close();  */// 다 읽었으면 닫아주어야 한다.
       }
       /* 정규식 
        * public String removeTag(String html) throws Exception { return
        * html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""); }
        */
    
-   //문자열이 정수로변환이 되는지 안되는지 판단하는 메소드 
+   //문자열이 정수로 변환이 되는지 안되는지 판단하는 메소드 
     public static boolean isStringDouble(String s) {
           try {
               Double.parseDouble(s);
@@ -105,4 +119,17 @@ public class eomisaeWebcrawling {
               return false;
           }
         }
+    
+    //파일 라인 읽기 
+    public static List<String> fileLineRead(String name) throws IOException
+    {
+     List<String> retStr = new ArrayList<String>();
+     BufferedReader in = new BufferedReader(new FileReader(name));
+     String s;
+     while ((s = in.readLine()) != null) {
+      retStr.add(s);
+     }
+     in.close();
+     return retStr;  
+    }
    }
