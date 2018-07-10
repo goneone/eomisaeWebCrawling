@@ -32,18 +32,21 @@ public class eomisaeWebcrawling {
 
 		// output.txt에서 댓글 5이상 25이하인 글만 출력.
 		List<String> ret = fileLineRead("output.txt");
+		List<String> retMessage = new ArrayList<String>();
 		//메일보내기 메소드 인스턴스 생성
 		sendMail sendMail = new sendMail();
+		String result = "";
 		for (int i = 0; i < ret.size(); i++) {
 			if (isStringDouble(ret.get(i))) {
 				if ((Integer.parseInt(ret.get(i))) <= 25 && (Integer.parseInt(ret.get(i))) >= 5) {
-					String result = ret.get(i - 1) + " " + ret.get(i);
+					result = ret.get(i - 1) + " " + ret.get(i);
+					retMessage.add(result);
 					System.out.println(result);
 					
 				}
 			} 
 		}
-		
+		//sendMail.sendMail(retMessage);
 		
 		
 	}

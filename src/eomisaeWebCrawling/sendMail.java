@@ -1,5 +1,6 @@
 package eomisaeWebCrawling;
 
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.Authenticator;
@@ -12,7 +13,7 @@ import javax.mail.internet.MimeMessage;
  
 public class sendMail {
     
-    public static void sendMail(String message){
+    public static void sendMail(List<String> message){
         Properties properties = new Properties();
         properties.put("mail.smtp.user", "kuyt1819@gmail.com"); //구글 계정
         properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -37,7 +38,9 @@ public class sendMail {
             Address toAddr = new InternetAddress("kuyt1819@gmail.com");    //받는사람 EMAIL
             msg.addRecipient(Message.RecipientType.TO, toAddr);
             //msg.setContent("메일에 전송될 내용", "text/plain;charset=KSC5601"); //메일 전송될 내용
-            msg.setContent(message, "text/plain;charset=KSC5601"); //메일 전송될 내용
+            msg.setContent(message, "text/html; charset=utf-8");
+            //msg.setContent(message, "text/plain;charset=KSC5601"); //메일 전송될 내용
+            //msg.setText(message.toString());
             Transport.send(msg);
             
             
@@ -49,7 +52,7 @@ public class sendMail {
     private static class senderAccount extends javax.mail.Authenticator {
  
         public PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication("kuyt1819", ""); // @gmail.com 제외한 계정 ID, PASS
+            return new PasswordAuthentication("kuyt1819", "qq1066411"); // @gmail.com 제외한 계정 ID, PASS
  
         }
     }
